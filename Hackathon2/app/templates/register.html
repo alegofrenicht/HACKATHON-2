@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "index.html" %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Registration{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <form class="card-body bg-danger ms-3" method="POST">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <div class="alert alert-warning" role="alert" style="font-size: 2vh">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {{ form.hidden_tag() }}
+
+            <div class="card-text" style="font-size: 3vh">{{ form.username.label }}</div>
+            <div>{{ form.username(size=32) }}</div>
+            <div class="card-text mt-5" style="font-size: 3vh">{{ form.mail.label }}</div>
+            <div>{{ form.mail(size=32) }}</div>
+            <div class="card-text mt-5" style="font-size: 3vh">{{ form.password.label }}</div>
+            <div>{{ form.password(type="password", size=32) }}</div>
+            <div class="buttons">
+                <div class="mt-5" style="font-size: 3vh">{{ form.submit() }}</div>
+                <a class="btn btn-warning mt-5" href="{{ url_for('home') }}" style="font-size: 2vh">Log-In</a>
+            </div>
+        </form>
+    {% endblock %}
+
+</body>
+</html>

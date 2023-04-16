@@ -1,0 +1,91 @@
+body {
+    font-family: 'Big Shoulders Display', cursive;
+}
+
+
+#logo:hover{
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+
+
+.nav-link {
+    font-size: 3vh;
+    margin-left: 5vh;
+}
+
+.poster-wrapper {
+    height: 70vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body {
+    border: black solid 3px;
+    position: absolute;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    z-index: 2;
+}
+
+
+.welcome {
+    max-width: 80%;
+    opacity: 0;
+    transition: opacity 3s ease;
+
+}
+
+.welcome.fade-in {
+  opacity: 1;
+}
+
+.grid {
+    border: solid 3px black;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-gap: 10rem;
+    padding: 4rem;
+}
+
+.quiz_poster:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.poster-wrapper > .card-body {
+    text-align: center;
+}
+
+.flashes {
+    padding-left: 0;
+}
+
+.btn-warning.focus, .btn-warning:focus {
+     box-shadow: none;
+}
+
+.toggle {
+    text-align: center;
+    appearance: none;
+    outline: none;
+}
+
+.toggle-handle {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.stats_labels {
+    font-size: 5vh;
+    color: orange;
+}

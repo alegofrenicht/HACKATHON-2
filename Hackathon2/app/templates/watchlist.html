@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'index.html' %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Hello, {{ user.username }}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="welcome card-body bg-light mt-5">
+
+            <h1 style="color: orange">Hello, {{ user.username }}!</h1>
+                {% if quiz == True %}
+                    <h1 style="color: orange">Welcome to Movie+</h1>
+                    <h1 style="color: orange">Here are some movies, choose any you like (min: 3):</h1>
+                    <div class="grid bg-dark">
+                        {% for movie in movies %}
+                            <div class="quiz_frame">
+                                <img class="quiz_poster" src="{{ movie.poster }}" alt="movie poster" style="width: 60%">
+                                <label class="clicker mt-5" style="width: 110%" data-movie="{{ movie.id }}">
+                                    <input class='toggle' type="checkbox" checked data-toggle="toggle" data-on='<i class="fa fa-heart"></i> Like' data-off='<i class="fa fa-thumbs-down"></i> Dislike' data-onstyle="light" data-offstyle="success">
+                                </label>
+                                <button style="width: 110%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="btn btn-warning mt-5" type="button" data-toggle="collapse" data-target="#{{ movie.id }}" aria-expanded="false" aria-controls="{{ movie.id }}">
+                                    {{ movie.title }}
+                                </button>
+                                <div class="collapse" style="text-align: center; width: 110%" id="{{ movie.id }}">
+                                    <div class="card-text bg-white">
+                                        <div>
+                                            <br>
+                                            <p>Director: {{ movie.director }}</p>
+                                            <p>Genre: {{ movie.genre }}</p>
+                                            <p>Release: {{ movie.release_date }}</p>
+                                            <p>Language: {{ movie.language }}</p>
+                                            <p>Runtime: {{ movie.runtime }} min</p>
+                                            <p>Plot: {{ movie.overview }}</p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="submit-btn btn btn-warning mt-5" style="width: 30%; font-size: 3vh">Submit</a>
+                {% else %}
+                    <h2>Great to see you again</h2>
+                    <h1 style="color: orange">Your watchlist:</h1>
+                    <div class="grid bg-dark">
+                        {% for movie in movies %}
+                            <div class="quiz_frame">
+                                <img class="quiz_poster" src="{{ movie.poster }}" alt="movie poster" style="width: 60%">
+                                <button style="width: 110%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="btn btn-warning mt-5" type="button" data-toggle="collapse" data-target="#{{ movie.id }}" aria-expanded="false" aria-controls="{{ movie.id }}">
+                                    {{ movie.title }}
+                                </button>
+                                <div class="collapse" style="text-align: center; width: 110%" id="{{ movie.id }}">
+                                    <div class="card-text bg-white">
+                                        <div>
+                                            <br>
+                                            <p>Director: {{ movie.director }}</p>
+                                            <p>Genre: {{ movie.genre }}</p>
+                                            <p>Release: {{ movie.release_date }}</p>
+                                            <p>Language: {{ movie.language }}</p>
+                                            <p>Runtime: {{ movie.runtime }} min</p>
+                                            <p>Plot: {{ movie.overview }}</p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-warning mt-5" style="width: 50%; font-size: 3vh" href="{{ url_for('remove_from_watchlist', user=user.username, movie_id=movie.id) }}">Remove</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <h1 class="mt-5" style="color: orange">These movies might be interesting for you:</h1>
+                    <div class="grid bg-dark mt-5">
+                        {% for movie in similar_movies[:9] %}
+                            <div class="quiz_frame">
+                                <img class="quiz_poster" src="{{ movie.poster }}" alt="movie poster" style="width: 60%">
+                                <button style="width: 110%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="btn btn-warning mt-5" type="button" data-toggle="collapse" data-target="#{{ movie.id }}" aria-expanded="false" aria-controls="{{ movie.id }}">
+                                    {{ movie.title }}
+                                </button>
+                                <div class="collapse" style="text-align: center; width: 110%" id="{{ movie.id }}">
+                                    <div class="card-text bg-white">
+                                        <div>
+                                            <br>
+                                            <p>Director: {{ movie.director }}</p>
+                                            <p>Genre: {{ movie.genre }}</p>
+                                            <p>Release: {{ movie.release_date }}</p>
+                                            <p>Language: {{ movie.language }}</p>
+                                            <p>Runtime: {{ movie.runtime }} min</p>
+                                            <p>Plot: {{ movie.overview }}</p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-warning mt-5" style="width: 50%; font-size: 3vh" href="{{ url_for('add_to_watchlist', user=user.username, movie_id=movie.id) }}">Add</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>
