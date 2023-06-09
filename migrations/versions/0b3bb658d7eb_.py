@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5c8c2d86d26c
+Revision ID: 0b3bb658d7eb
 Revises: 
-Create Date: 2023-04-11 15:01:42.826158
+Create Date: 2023-06-09 19:17:53.493649
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5c8c2d86d26c'
+revision = '0b3bb658d7eb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,12 +31,12 @@ def upgrade():
 
     op.create_table('movie',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=64), nullable=True),
+    sa.Column('title', sa.String(length=100), nullable=True),
     sa.Column('release_date', sa.Date(), nullable=True),
     sa.Column('poster', sa.String(length=100), nullable=True),
-    sa.Column('language', sa.String(length=64), nullable=True),
-    sa.Column('director', sa.String(length=64), nullable=True),
-    sa.Column('genre', sa.String(length=64), nullable=True),
+    sa.Column('language', sa.String(length=100), nullable=True),
+    sa.Column('director', sa.String(length=200), nullable=True),
+    sa.Column('genre', sa.String(length=200), nullable=True),
     sa.Column('overview', sa.Text(), nullable=True),
     sa.Column('runtime', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -44,11 +44,11 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     with op.batch_alter_table('movie', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_movie_title'), ['title'], unique=True)
+        batch_op.create_index(batch_op.f('ix_movie_title'), ['title'], unique=False)
 
     op.create_table('similar_movie',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('title', sa.String(length=64), nullable=True),
+    sa.Column('title', sa.String(length=100), nullable=True),
     sa.Column('movie_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['movie_id'], ['movie.id'], ),
     sa.PrimaryKeyConstraint('id')

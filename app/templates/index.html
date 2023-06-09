@@ -44,15 +44,13 @@
               {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
             {% if session.logged_in %}
             <span class="navbar-text" style="margin-left: 2vh">
                 Welcome, {{ session.user_name }}!
             </span>
-            <a class="btn btn-warning" href="{{ url_for('logout') }}" style="font-size: 2vh; margin-left: 2vh">Log Out</a>
+            <a class="btn btn-warning" href="{{ url_for('logout') }}" style="font-size: 3vh; margin-left: 2vh">Log Out</a>
             {% else %}
-                <a class="btn btn-warning" href="{{ url_for('home') }}" style="font-size: 2vh; margin-left: 2vh">Log In</a>
+                <a class="btn btn-warning" href="{{ url_for('home') }}" style="font-size: 3vh; margin-left: 2vh">Log In</a>
             {% endif %}
         </form>
       </div>
