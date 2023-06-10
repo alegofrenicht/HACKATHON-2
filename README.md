@@ -1,7 +1,7 @@
 # HACKATHON-2
 # Movie Recommendation System
 
-This project is a movie recommendation system implemented using Flask, SQLAlchemy, and Bootstrap. It allows users to sign in, register, and create their watchlist of movies. The system generates movie recommendations based on the user's watchlist and provides statistical insights on user preferences.
+This project is a movie recommendation system implemented using Flask, Postgresql, Bootstrap and Pandas library for compiling statistics. It allows users to sign in, register, and create their watchlist of movies. The system generates movie recommendations based on the user's watchlist and provides statistical insights on user preferences.
 
 ## Features
 
