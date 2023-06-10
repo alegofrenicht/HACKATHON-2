@@ -17,3 +17,7 @@ This project is a movie recommendation system implemented using Flask, SQLAlchem
 - **Home**: The home page displays a movie recommendation and a sign-in form. Users can sign in to their account or register for a new account.
 - **Watchlist**: Users can view their personalized watchlist, add movies to the watchlist, and remove movies from the watchlist. The system generates movie recommendations based on the user's watchlist.
 - **Statistics**: Users can view statistical insights on their movie preferences, including top genres, most-watched movies, and more.
+
+### Deployment
+
+The Movie Recommendation System is deployed and can be accessed at [https://almovie-app.onrender.com/](https://almovie-app.onrender.com/). Please note that you may need to sign up or log in to use the system.
