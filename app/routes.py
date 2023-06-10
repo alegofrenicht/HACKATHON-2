@@ -12,6 +12,11 @@ def index():  # creates main template with navigation bar
     return redirect(url_for('home'))
 
 
+@app.route('/health')
+def health():
+    return "ok"
+
+
 @app.route('/home', methods=("GET", "POST"))
 def home():
     form = LoginForm()
