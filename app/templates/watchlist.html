@@ -17,10 +17,10 @@
                         {% for movie in movies %}
                             <div class="quiz_frame">
                                 <img class="quiz_poster" src="{{ movie.poster }}" alt="movie poster" style="width: 60%">
-                                <label class="clicker mt-5" style="width: 110%" data-movie="{{ movie.id }}">
+                                <label class="clicker mt-5" style="width: 80%" data-movie="{{ movie.id }}">
                                     <input class='toggle' type="checkbox" checked data-toggle="toggle" data-on='<i class="fa fa-heart"></i> Like' data-off='<i class="fa fa-thumbs-down"></i> Dislike' data-onstyle="light" data-offstyle="success">
                                 </label>
-                                <button style="width: 110%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="btn btn-warning mt-5" type="button" data-toggle="collapse" data-target="#{{ movie.id }}" aria-expanded="false" aria-controls="{{ movie.id }}">
+                                <button style="width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="btn btn-warning mt-5" type="button" data-toggle="collapse" data-target="#{{ movie.id }}" aria-expanded="false" aria-controls="{{ movie.id }}">
                                     {{ movie.title }}
                                 </button>
                                 <div class="collapse" style="text-align: center; width: 110%" id="{{ movie.id }}">
